@@ -100,3 +100,13 @@ void gpio_write(const struct iopin, const uint8_t value);
 void gpio_set(const struct iopin iopin);
 void gpio_reset(const struct iopin iopin);
 uint8_t gpio_read(const struct iopin iopin);
+
+
+static inline void gpio_level_direction_output(const struct iopin iopin)
+{
+	gpio_reset(iopin);
+}
+static inline void gpio_level_direction_input(const struct iopin iopin)
+{
+	gpio_set(iopin);
+}
