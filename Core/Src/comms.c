@@ -1,24 +1,50 @@
 #include "comms.h"
 #include "isa.h"
 
-
+#include "../../USB_DEVICE/App/usbd_cdc_if.h"
+void send_char(uint8_t chara)
+{
+	CDC_Transmit_FS((uint8_t *) &chara, 1);
+}
 
 void receivePacket(uint8_t* Buf, uint32_t *Len)
 {
 	//printf("received %lu bytes\r\n", *Len);
-	if (*Len >= 3)
-	{
+	
 		switch(Buf[0]) {
 			case 'i': 
-				printf("%c", isa_ior((Buf[1] << 8) | Buf[2]));
+				if (*Len >= 3)
+				{
+					send_char(isa_ior((Buf[1] << 8) | Buf[2]));
+				}
 				break;
+			case 'o': 
+				if (*Len >= 4)
+				{
+					isa_iow((Buf[1] << 8) | Buf[2], Buf[3]);
+					send_char('o');
+				}
+				break;	
+			case 'r': 
+				if (*Len >= 4)
+				{
+					send_char(isa_memr((Buf[1] << 16) |(Buf[2] << 8) | Buf[3]));
+				}
+				break;
+			case 'w': 
+				if (*Len >= 5)
+				{
+					isa_memw((Buf[1] << 16) |(Buf[2] << 8) | Buf[3], Buf[4]);
+					send_char('w');
+				}
+				break;	
 			default: 
-				printf("e");
+				send_char('e');
 				break;
 		}
 
 
-	}
+	
 }
 
 /*

@@ -129,7 +129,6 @@ uint8_t isa_memr(uint32_t address)
 
 	gpio_set(iopins[GPIO_MEMR]);
 
-	HAL_Delay(1);
 	while (!gpio_read(iopins[GPIO_IO_CH_RDY]))
 	{
 	}

@@ -73,7 +73,6 @@ int _write(int file, char *ptr, int len)
   return len;
 }
 
-unsigned char usb_read_buffer[2048];
 /* USER CODE END 0 */
 
 /**
