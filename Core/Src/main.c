@@ -111,7 +111,7 @@ int main(void)
   init_isastm();
 
   HAL_Delay(10000);
-  printf("init done\n");
+  //printf("init done\n");
   /* USER CODE END 2 */
 
   /* Infinite loop */

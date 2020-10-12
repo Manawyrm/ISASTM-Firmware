@@ -34,11 +34,11 @@ void isa_set_data_direction(uint32_t direction)
 {
 	if (direction)
 	{
-		GPIOI->MODER = 0x5555;
+		GPIOI->MODER = (GPIOI->MODER & 0xFFFF0000) | 0x5555;
 	}
 	else
 	{
-		GPIOI->MODER = 0xFFFF;
+		GPIOI->MODER = (GPIOI->MODER & 0xFFFF0000);
 	}
 }
 
@@ -129,6 +129,7 @@ uint8_t isa_memr(uint32_t address)
 
 	gpio_set(iopins[GPIO_MEMR]);
 
+	HAL_Delay(1);
 	while (!gpio_read(iopins[GPIO_IO_CH_RDY]))
 	{
 	}
