@@ -40,6 +40,7 @@ Core/Src/main.c \
 Core/Src/debug.c \
 Core/Src/gpio.c \
 Core/Src/isa.c \
+Core/Src/comms.c \
 Core/Src/stm32h7xx_it.c \
 Core/Src/stm32h7xx_hal_msp.c \
 Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_cortex.c \

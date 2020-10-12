@@ -72,6 +72,8 @@ int _write(int file, char *ptr, int len)
   //HAL_UART_Transmit(&huart1, (uint8_t *)ptr, len, 0xFFFF);
   return len;
 }
+
+unsigned char usb_read_buffer[2048];
 /* USER CODE END 0 */
 
 /**
@@ -110,8 +112,8 @@ int main(void)
   init_leds();
   init_isastm();
 
-  HAL_Delay(10000);
-  //printf("init done\n");
+  HAL_Delay(2500);
+  printf("init done\n");
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -121,6 +123,13 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
+
+  	/*CDC_Receive_FS(usb_read_buffer, &length);
+
+  	if (length)
+  	{
+  		printf("Read some data: %lu bytes \r\n", length);
+  	}*/
 
   	switch_leds();
 

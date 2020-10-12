@@ -36,20 +36,20 @@ void switch_leds()
 
 
 
-	uint8_t data = isa_memr(address);
+/*	uint8_t data = isa_memr(address);
 	//isa_iow(0x80, data);
 	printf("%c", data);
 	//printf("address: %04lx data: %02x\r\n", address, data);
 	address++;
-
+*/
 
 	gpio_write(iopins[GPIO_LED5], 1);
-	// HAL_Delay(200);
+	 HAL_Delay(200);
 	gpio_write(iopins[GPIO_LED5], 0);
-
-	if (address == 0xFFFFF)
+	HAL_Delay(200);
+	/*if (address == 0xFFFFF)
 	{
 		while(1) { HAL_Delay(200);}
-	}
+	}*/
 }
 
