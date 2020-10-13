@@ -43,10 +43,11 @@ void switch_leds()
 	address++;
 */
 
-	gpio_write(iopins[GPIO_LED5], 1);
-	 HAL_Delay(200);
-	gpio_write(iopins[GPIO_LED5], 0);
-	HAL_Delay(200);
+	/*gpio_write(iopins[GPIO_LED1], 1);
+	HAL_Delay(200);*/
+	gpio_write(iopins[GPIO_LED1], 0);
+	
+	HAL_Delay(2000);
 	/*if (address == 0xFFFFF)
 	{
 		while(1) { HAL_Delay(200);}

@@ -37,6 +37,9 @@ void receivePacket(uint8_t* Buf, uint32_t *Len)
 					isa_memw((Buf[1] << 16) |(Buf[2] << 8) | Buf[3], Buf[4]);
 					send_char('w');
 				}
+				break;
+			case 'R':
+				isa_reset();
 				break;	
 			default: 
 				send_char('e');
