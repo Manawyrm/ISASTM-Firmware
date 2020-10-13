@@ -127,6 +127,11 @@ void init_isastm()
 
 		gpio_write(iopins[i], !!(iopins[i].flags & GPIO_FLAG_DEFAULT_ACTIVE));
 	}
+
+	gpio_set(iopins[GPIO_RESET]);
+	HAL_Delay(1000);
+	gpio_reset(iopins[GPIO_RESET]);
+	HAL_Delay(500);
 }
 
 void gpio_write(const struct iopin iopin, const uint8_t value)
