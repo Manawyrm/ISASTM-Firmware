@@ -90,6 +90,8 @@ int main(void)
   HAL_Init();
 
   /* USER CODE BEGIN Init */
+    /* Enable I-Cache---------------------------------------------------------*/
+  //SCB_EnableICache();
 
   /* USER CODE END Init */
 

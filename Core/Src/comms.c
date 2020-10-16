@@ -22,7 +22,7 @@ void receivePacket(uint8_t* Buf, uint32_t *Len)
 				if (*Len >= 4)
 				{
 					isa_iow((Buf[1] << 8) | Buf[2], Buf[3]);
-					//send_char('o');
+					send_char('o');
 				}
 				break;	
 			case 'r': 
